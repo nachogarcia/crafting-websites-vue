@@ -5,7 +5,7 @@ import { phraseService } from '@/infrastructure/Factory'
 Vue.use(Vuex)
 
 export const state = {
-  phrases: [],
+  phrases: []
 }
 
 export const getters = {}
@@ -13,7 +13,7 @@ export const getters = {}
 export const mutations = {
   addPhrases (state, phrases) {
     state.phrases = state.phrases.concat(phrases)
-  },
+  }
 }
 
 export const actions = {

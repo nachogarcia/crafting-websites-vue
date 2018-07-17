@@ -25,7 +25,7 @@ describe('Home', () => {
   let store
   let router
 
-  beforeEach( () => {
+  beforeEach(() => {
     store = new Vuex.Store({
       actions,
       mutations,
@@ -44,7 +44,7 @@ describe('Home', () => {
     await flushPromises()
     const phrases = wrapper.findAll('.phrase')
 
-    GET_RANDOM_PHRASES.forEach( (phrase, index) => {
+    GET_RANDOM_PHRASES.forEach((phrase, index) => {
       const phraseComponent = phrases.at(index)
       const text = phraseComponent.text()
       expect(text).toBe(phrase.text)

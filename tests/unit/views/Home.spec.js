@@ -2,7 +2,6 @@ import { shallowMount, createLocalVue } from '@vue/test-utils'
 import Vuex from 'vuex'
 import Home from '@/views/Home'
 import { GET_RANDOM_PHRASES } from '../../fixtures/services/PhraseService'
-import { phraseService } from '@/infrastructure/Factory'
 import PhraseList from '@/components/PhraseList'
 
 const localVue = createLocalVue()
@@ -13,7 +12,7 @@ describe('Home', () => {
   let actions
   let state
 
-  beforeEach( () => {
+  beforeEach(() => {
     actions = {
       getRandomPhrases: jest.fn()
     }
