@@ -11,7 +11,7 @@ describe('PhraseList', () => {
     })
     const phrases = wrapper.findAll('.phrase')
 
-    GET_RANDOM_PHRASES.forEach( (phrase, index) => {
+    GET_RANDOM_PHRASES.forEach((phrase, index) => {
       const phraseComponent = phrases.at(index)
       const text = phraseComponent.text()
       expect(text).toBe(phrase.text)
