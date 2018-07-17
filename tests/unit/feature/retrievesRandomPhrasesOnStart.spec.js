@@ -5,7 +5,7 @@ import App from '@/App'
 import {
   GET_RANDOM_PHRASES_RESPONSE,
   GET_RANDOM_PHRASES
-} from '../fixtures/services/PhraseService'
+} from '../../fixtures/services/PhraseService'
 import { PHRASES_API } from '@/infrastructure/config'
 import MockAdapter from 'axios-mock-adapter'
 import * as axios from 'axios'
@@ -28,7 +28,7 @@ describe('Home', () => {
     await flushPromises()
     const phrases = wrapper.findAll('.phrase')
 
-    GET_RANDOM_PHRASES.forEach( (phrase, index) => {
+    GET_RANDOM_PHRASES.forEach((phrase, index) => {
       const phraseComponent = phrases.at(index)
       const text = phraseComponent.text()
       expect(text).toBe(phrase.text)
