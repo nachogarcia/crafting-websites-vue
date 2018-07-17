@@ -1,21 +1,21 @@
 <template>
-  <PhraseList :phrases ="phrases"/>
+  <PhraseList :phrases ="$store.state.phrases"/>
 </template>
 
 <script>
 import PhraseList from '@/components/PhraseList.vue'
-import { phraseService } from '@/infrastructure/Factory'
+import { mapActions } from 'vuex'
 
 export default {
   name: 'home',
   components: {
     PhraseList
   },
-  data: () => ({
-    phrases: []
-  }),
+  methods: {
+    ...mapActions(['getRandomPhrases'])
+  },
   async created () {
-    this.phrases = await phraseService.getRandomPhrases(5)
+    await this.getRandomPhrases(5)
   }
 }
 </script>

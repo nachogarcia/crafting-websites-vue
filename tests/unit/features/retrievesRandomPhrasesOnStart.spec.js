@@ -1,11 +1,13 @@
 import { mount, createLocalVue } from '@vue/test-utils'
 import VueRouter from 'vue-router'
+import Vuex from 'vuex'
+import { actions, mutations, getters, state } from '@/store'
 import routes from '@/router/routes'
 import App from '@/App'
 import {
   GET_RANDOM_PHRASES_RESPONSE,
   GET_RANDOM_PHRASES
-} from '../fixtures/services/PhraseService'
+} from '../../fixtures/services/PhraseService'
 import { PHRASES_API } from '@/infrastructure/config'
 import MockAdapter from 'axios-mock-adapter'
 import * as axios from 'axios'
@@ -17,13 +19,27 @@ mockHttp
 
 const localVue = createLocalVue()
 localVue.use(VueRouter)
-const router = new VueRouter(routes)
+localVue.use(Vuex)
 
 describe('Home', () => {
+  let store
+  let router
+
+  beforeEach( () => {
+    store = new Vuex.Store({
+      actions,
+      mutations,
+      getters,
+      state
+    })
+    router = new VueRouter(routes)
+  })
+
   it('retrieves random phrases on start', async () => {
     const wrapper = mount(App, {
       localVue,
-      router
+      router,
+      store
     })
     await flushPromises()
     const phrases = wrapper.findAll('.phrase')
