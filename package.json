@@ -26,6 +26,7 @@
     "axios-mock-adapter": "^1.15.0",
     "babel-core": "7.0.0-bridge.0",
     "babel-jest": "^23.0.1",
+    "precss": "^3.1.2",
     "vue-template-compiler": "^2.5.16"
   }
 }
