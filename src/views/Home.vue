@@ -1,18 +1,21 @@
 <template>
-  <div class="home">
-    <img src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <PhraseList :phrases ="phrases"/>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import PhraseList from '@/components/PhraseList.vue'
+import { phraseService } from '@/infrastructure/Factory'
 
 export default {
   name: 'home',
   components: {
-    HelloWorld
+    PhraseList
+  },
+  data: () => ({
+    phrases: []
+  }),
+  async created () {
+    this.phrases = await phraseService.getRandomPhrases(5)
   }
 }
 </script>

@@ -1,4 +1,4 @@
-import { VUE_APP_PHRASES_URL } from '@/infrastructure/config'
+import { PHRASES_API } from '@/infrastructure/config'
 
 const parsePhrase = phrase => ({
   id: phrase.id,
@@ -13,7 +13,7 @@ export default class PhraseService {
   }
 
   async getRandomPhrases(numberOfPhrases){
-    const url = `${VUE_APP_PHRASES_URL}/random/${numberOfPhrases}?escape=javascript`
+    const url = `${PHRASES_API}/random/${numberOfPhrases}?escape=javascript`
     const response = await this.httpClient.get(url)
     return parsePhrases(response.data)
   }
